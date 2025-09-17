@@ -13,6 +13,9 @@ trait BasePage extends PageObject {
   protected val continueButton: By = By.id("continue")
   protected val submitButton: By = By.className("govuk-button")
 
+  def findError: String =
+    getText(By.className("govuk-error-summary"))
+
   def pageTitle(by: By = pageHeading): String =
     getText(by)
 }
