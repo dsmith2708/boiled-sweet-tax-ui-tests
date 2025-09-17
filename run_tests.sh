@@ -8,4 +8,4 @@ echo "Browser:              ${BROWSER}"
 echo "Env:                  local"
 echo "Journey:              Boiled Sweet Tax Registration UI Tests"
 echo "=========================================="
-sbt clean -Dbrowser="${BROWSER}" -Denvironment=local -Dbrowser.option.headless=false "testOnly specs.*" testReport
+sbt clean -Dbrowser="${BROWSER}" -Denvironment=local -Dbrowser.option.headless=true"testOnly specs.*" testReport

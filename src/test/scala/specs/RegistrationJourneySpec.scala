@@ -27,6 +27,12 @@ class RegistrationJourneySpec extends BaseSpec {
       Then("The user clicks the submit button")
       BusinessNamePage.submit("Test Business")
 
+      Given("The user is on the date of business started page")
+      BusinessNamePage.pageTitle() shouldBe "What is the Date that your business started trading?"
+
+      Then("The user clicks the submit button")
+      BusinessNamePage.submit("Test Business")
+
       Given("The user is on the business address page")
       BusinessAddressPage.pageTitle() shouldBe "What is the address of your business?"
 
