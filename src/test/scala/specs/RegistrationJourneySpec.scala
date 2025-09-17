@@ -73,7 +73,7 @@ class RegistrationJourneySpec extends BaseSpec {
       BusinessDatePage.pageTitle() shouldBe "What is the Date that your business started trading?"
 
       Given("The user has an error")
-      BusinessDatePage.findError shouldBe "dfsrgfwa"
+      BusinessDatePage.findError shouldBe "There is a problem Month out of range"
     }
   }
 
