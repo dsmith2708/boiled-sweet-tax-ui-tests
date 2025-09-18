@@ -47,7 +47,7 @@ class RegistrationJourneySpec extends BaseSpec {
       CheckAnswersPage.submit()
 
       Given("The user is on the confirmation page")
-      CheckConfirmationPage.pageTitle() shouldBe "Welcome to the Boiled Sweet Tax registration service"
+      CheckConfirmationPage.pageTitle() shouldBe "Registration Complete"
 
       Then("The user clicks the submit button")
       CheckConfirmationPage.submit()
@@ -85,7 +85,7 @@ class RegistrationJourneySpec extends BaseSpec {
       BusinessDatePage.pageTitle() shouldBe "What is the Date that your business started trading?"
 
       Given("The user has an error")
-      BusinessDatePage.findError shouldBe "There is a problem Month out of range"
+      BusinessDatePage.findError shouldBe "There is a problem\nMonth out of range"
     }
   }
 }
