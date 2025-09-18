@@ -31,7 +31,7 @@ class RegistrationJourneySpec extends BaseSpec {
       BusinessDatePage.pageTitle() shouldBe "What is the Date that your business started trading?"
 
       Then("The user clicks the submit button")
-      BusinessDatePage.submit(1,10,1990)
+      BusinessDatePage.submit(1, 10, 1990)
 
       Given("The user is on the business address page")
       BusinessAddressPage.pageTitle() shouldBe "What is the address of your business?"
@@ -40,11 +40,23 @@ class RegistrationJourneySpec extends BaseSpec {
       val testAddress = Address("123", "Test Street", "Test City", "Testshire", "TE5 7ED")
       BusinessAddressPage.submit(testAddress)
 
-      Given("The use is on the check your answers page")
+      Given("The user is on the check your answers page")
       CheckAnswersPage.pageTitle() shouldBe "Check your answers"
 
       Then("The user clicks the submit button")
       CheckAnswersPage.submit()
+
+      Given("The user is on the confirmation page")
+      CheckConfirmationPage.pageTitle() shouldBe "Welcome to the Boiled Sweet Tax registration service"
+
+      Then("The user clicks the submit button")
+      CheckConfirmationPage.submit()
+
+      IndexPage.pageTitle() shouldBe "Welcome to the Boiled Sweet Tax registration service"
+
+
+
+
 
     }
 
@@ -67,14 +79,13 @@ class RegistrationJourneySpec extends BaseSpec {
       BusinessDatePage.pageTitle() shouldBe "What is the Date that your business started trading?"
 
       Then("The user clicks the submit button")
-      BusinessDatePage.submit(1,-10,3006445)
+      BusinessDatePage.submit(1, -10, 3006445)
 
       Given("The user is on the date of business started page")
       BusinessDatePage.pageTitle() shouldBe "What is the Date that your business started trading?"
 
       Given("The user has an error")
-      BusinessDatePage.findError shouldBe "dfsrgfwa"
+      BusinessDatePage.findError shouldBe "There is a problem Month out of range"
     }
   }
-
 }
