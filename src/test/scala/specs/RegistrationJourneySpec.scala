@@ -55,9 +55,6 @@ class RegistrationJourneySpec extends BaseSpec {
       IndexPage.pageTitle() shouldBe "Welcome to the Boiled Sweet Tax registration service"
 
 
-
-
-
     }
 
     Scenario("A user wants to sign up for Boiled Sweet Tax but is really bad") {
@@ -134,17 +131,36 @@ class RegistrationJourneySpec extends BaseSpec {
       IndexPage.submit()
 
       Given("The user is on the business name page")
-      CheckErrorPage.pageTitle() shouldBe "What is the name of your business?"
+      BusinessNamePage.pageTitle() shouldBe "What is the name of your business?"
 
       Then("The user clicks the submit button")
       BusinessNamePage.submit("Already used")
 
-      Given("The user is on the name is used error")
-      CheckErrorPage.pageTitle() shouldBe "service error"
+      Given("The user is on the date of business started page")
+      BusinessDatePage.pageTitle() shouldBe "What is the Date that your business started trading?"
 
+      Then("The user clicks the submit button")
+      BusinessDatePage.submit(1, 10, 1990)
+
+      Given("The user is on the business address page")
+      BusinessAddressPage.pageTitle() shouldBe "What is the address of your business?"
+
+      Then("The user clicks the submit button")
+      val testAddress = Address("123", "Test Street", "Test City", "Testshire", "TE5 7ED")
+      BusinessAddressPage.submit(testAddress)
+
+      Given("The user is on the check your answers page")
+      CheckAnswersPage.pageTitle() shouldBe "Check your answers"
+
+      Then("The user clicks the submit button")
+      CheckAnswersPage.submit()
+
+      Given("The user is on the Error Page")
+      CheckErrorPage.pageTitle() shouldBe "error page"
 
 
 
 
     }
   }
+}
